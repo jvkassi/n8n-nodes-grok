@@ -2,6 +2,8 @@
 
 This is an n8n community node for OpenRouter API integration. It allows you to interact with various AI models through the OpenRouter platform directly from your n8n workflows.
 
+[![Follow on X](https://img.shields.io/twitter/follow/matthewsabia?style=social&logo=twitter)](https://x.com/matthewsabia)
+
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
 [OpenRouter](https://openrouter.ai/) is a platform that provides access to various AI models through a unified API.

@@ -3,10 +3,10 @@ import {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export class OpenRouterApi implements ICredentialType {
-	name = 'openRouterApi';
-	displayName = 'OpenRouter API';
-	documentationUrl = 'https://openrouter.ai/docs#authentication';
+export class GrokApi implements ICredentialType {
+	name = 'grokApi';
+	displayName = 'Grok API';
+	documentationUrl = 'https://console.x.ai/';
 	properties: INodeProperties[] = [
 		{
 			displayName: 'API Key',
@@ -17,7 +17,7 @@ export class OpenRouterApi implements ICredentialType {
 			},
 			default: '',
 			required: true,
-			description: 'The OpenRouter API key',
+			description: 'The Grok API key',
 		},
 	];
 }

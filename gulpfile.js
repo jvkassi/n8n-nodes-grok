@@ -13,7 +13,7 @@ function copyReadme() {
 }
 
 function copyAssets() {
-    return src('nodes/**/openrouter.svg')
+    return src('nodes/**/grok.svg')
         .pipe(dest(file => {
             // Construct the destination path relative to the 'dist' directory
             const relativePath = path.relative('nodes', file.path);

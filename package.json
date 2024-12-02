@@ -1,27 +1,27 @@
 {
-  "name": "n8n-nodes-openrouter",
-  "version": "0.3.37",
-  "description": "n8n node for OpenRouter API integration",
+  "name": "n8n-nodes-grok",
+  "version": "0.0.1",
+  "description": "n8n node for Grok API integration",
   "keywords": [
     "n8n-community-node-package",
     "n8n",
-    "openrouter",
+    "grok",
     "ai"
   ],
   "license": "MIT",
-  "homepage": "https://x.com/MatthewSabia",
+  "homepage": "https://x.com/jvkassi",
   "author": {
     "name": "Matthew Sabia",
-    "url": "https://x.com/MatthewSabia"
+    "url": "https://x.com/jvkassi"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MatthewSabia1/n8n-nodes-openrouter.git"
+    "url": "git+https://github.com/jvkassi/n8n-nodes-grok.git"
   },
   "main": "index.js",
   "scripts": {
     "prebuild": "rm -rf dist && echo 'Cleaned dist directory'",
-    "build": "echo 'Starting build...' && npx tsc --project tsconfig.json && echo 'TypeScript compilation complete' && mkdir -p dist/nodes/OpenRouter && echo 'Created directories' && cp nodes/OpenRouter/openrouter.svg dist/nodes/OpenRouter/ && echo 'Copied SVG' && ls -la dist/nodes/OpenRouter/",
+    "build": "echo 'Starting build...' && npx tsc --project tsconfig.json && echo 'TypeScript compilation complete' && mkdir -p dist/nodes/Grok && echo 'Created directories' && cp nodes/Grok/grok.svg dist/nodes/Grok/ && echo 'Copied SVG' && ls -la dist/nodes/Grok/",
     "dev": "tsc --watch",
     "format": "prettier nodes credentials --write",
     "lint": "eslint ./nodes ./credentials package.json",
@@ -36,10 +36,10 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/OpenRouterApi.credentials.js"
+      "dist/credentials/GrokApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/OpenRouter/OpenRouter.node.js"
+      "dist/nodes/Grok/Grok.node.js"
     ]
   },
   "devDependencies": {

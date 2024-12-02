@@ -11,7 +11,7 @@ import type {
 } from 'n8n-workflow';
 import { NodeOperationError } from 'n8n-workflow';
 
-interface IOpenRouterModel {
+interface IGrokModel {
 	id: string;
 	name: string;
 	description?: string;
@@ -22,7 +22,7 @@ interface IOpenRouterModel {
 	};
 }
 
-interface IOpenRouterResponse extends IDataObject {
+interface IGrokResponse extends IDataObject {
 	id: string;
 	model: string;
 	created: number;
@@ -42,23 +42,23 @@ interface IOpenRouterResponse extends IDataObject {
 	}>;
 }
 
-export class OpenRouter implements INodeType {
+export class Grok implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'OpenRouter',
-		name: 'openRouter',
-		icon: 'file:openrouter.svg',
+		displayName: 'Grok',
+		name: 'grokApi',
+		icon: 'file:grok.svg',
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"]}}',
-		description: 'Interact with OpenRouter API',
+		description: 'Interact with Grok API',
 		defaults: {
-			name: 'OpenRouter',
+			name: 'Grok',
 		},
 		inputs: '={{["main"]}}',
 		outputs: '={{["main"]}}',
 		credentials: [
 			{
-				name: 'openRouterApi',
+				name: 'grokApi',
 				required: true,
 			},
 		],
@@ -166,13 +166,13 @@ export class OpenRouter implements INodeType {
 	methods = {
 		loadOptions: {
 			async getModels(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
-				const credentials = await this.getCredentials('openRouterApi');
+				const credentials = await this.getCredentials('grokApi');
 				const options: IRequestOptions = {
-					url: 'https://openrouter.ai/api/v1/models',
+					url: 'https://api.x.ai/v1/models',
 					headers: {
 						Authorization: `Bearer ${credentials.apiKey}`,
-						'HTTP-Referer': 'https://github.com/MatthewSabia/n8n-nodes-openrouter',
-						'X-Title': 'n8n OpenRouter Node',
+						'HTTP-Referer': 'https://github.com/jvkassi/n8n-nodes-grok',
+						'X-Title': 'n8n Grok Node',
 						'Content-Type': 'application/json',
 					},
 					method: 'GET' as IHttpRequestMethods,
@@ -185,11 +185,11 @@ export class OpenRouter implements INodeType {
 					if (!response?.data || !Array.isArray(response.data)) {
 						throw new NodeOperationError(
 							this.getNode(),
-							'Invalid response format from OpenRouter API',
+							'Invalid response format from Grok API',
 						);
 					}
 
-					const truncateAndAddPricing = (model: IOpenRouterModel): string => {
+					const truncateAndAddPricing = (model: IGrokModel): string => {
 						const originalDescription = model.description || '';
 						const truncatedDescription = originalDescription.slice(0, Math.floor(originalDescription.length / 2));
 						const pricing = `Price: $${parseFloat(model.pricing.prompt) * 1000000}/1M tokens (prompt), $${parseFloat(model.pricing.completion) * 1000000}/1M tokens (completion)`;
@@ -200,8 +200,8 @@ export class OpenRouter implements INodeType {
 					};
 
 					const models = response.data
-						.filter((model: IOpenRouterModel) => model.id && model.name)
-						.map((model: IOpenRouterModel) => ({
+						.filter((model: IGrokModel) => model.id && model.name)
+						.map((model: IGrokModel) => ({
 							name: model.name,
 							value: model.id,
 							description: truncateAndAddPricing(model),
@@ -213,7 +213,7 @@ export class OpenRouter implements INodeType {
 					if (models.length === 0) {
 						throw new NodeOperationError(
 							this.getNode(),
-							'No models found in OpenRouter API response',
+							'No models found in Grok API response',
 						);
 					}
 
@@ -232,7 +232,7 @@ export class OpenRouter implements INodeType {
 		const items = this.getInputData();
 		const returnData: INodeExecutionData[] = [];
 
-		const credentials = await this.getCredentials('openRouterApi');
+		const credentials = await this.getCredentials('grokApi');
 		if (!credentials?.apiKey) {
 			throw new NodeOperationError(this.getNode(), 'No valid API key provided');
 		}
@@ -271,11 +271,11 @@ export class OpenRouter implements INodeType {
 					};
 
 					const options: IRequestOptions = {
-						url: 'https://openrouter.ai/api/v1/chat/completions',
+						url: 'https://api.x.ai/v1/chat/completions',
 						headers: {
 							Authorization: `Bearer ${credentials.apiKey}`,
-							'HTTP-Referer': 'https://github.com/MatthewSabia/n8n-nodes-openrouter',
-							'X-Title': 'n8n OpenRouter Node',
+							'HTTP-Referer': 'https://github.com/jvkassi/n8n-nodes-grok',
+							'X-Title': 'n8n Grok Node',
 							'Content-Type': 'application/json',
 						},
 						method: 'POST' as IHttpRequestMethods,
@@ -288,11 +288,11 @@ export class OpenRouter implements INodeType {
 					if (!response?.choices?.[0]?.message?.content) {
 						throw new NodeOperationError(
 							this.getNode(),
-							'Invalid response format from OpenRouter API',
+							'Invalid response format from Grok API',
 						);
 					}
 
-					const typedResponse = response as IOpenRouterResponse;
+					const typedResponse = response as IGrokResponse;
 					const messageContent = typedResponse.choices[0].message.content.trim();
 
 					returnData.push({

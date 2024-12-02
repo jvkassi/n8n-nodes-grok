@@ -1,12 +1,12 @@
-const { OpenRouterNode } = require('./dist/nodes/OpenRouterNode/OpenRouterNode.node');
-const { OpenRouterApi } = require('./dist/credentials/OpenRouterApi.credentials');
+const { GrokNode } = require('./dist/nodes/GrokNode/GrokNode.node');
+const { GrokApi } = require('./dist/credentials/GrokApi.credentials');
 
 module.exports = {
     nodes: [
-        OpenRouterNode
+        GrokNode
     ],
     credentials: [
-        OpenRouterApi
+        GrokApi
     ],
     version: require('./package.json').version,
 };

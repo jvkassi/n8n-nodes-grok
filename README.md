@@ -1,12 +1,12 @@
-# n8n-nodes-openrouter
+# n8n-nodes-grok
 
-This is an n8n community node for OpenRouter API integration. It allows you to interact with various AI models through the OpenRouter platform directly from your n8n workflows.
+This is an n8n community node for Grok API integration. It allows you to interact with various AI models through the Grok platform directly from your n8n workflows.
 
 [![Follow on X](https://img.shields.io/twitter/follow/matthewsabia?style=social&logo=twitter)](https://x.com/matthewsabia)
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
-[OpenRouter](https://openrouter.ai/) is a platform that provides access to various AI models through a unified API.
+[Grok](https://grok.ai/) is a platform that provides access to various AI models through a unified API.
 
 ## Features
 
@@ -25,11 +25,11 @@ To install this node as a community node in n8n, follow these steps:
 1. Open your n8n instance
 2. Go to "Settings" > "Community Nodes"
 3. Select "Install"
-4. Enter `n8n-nodes-openrouter` in the "Enter npm package name" field
+4. Enter `n8n-nodes-grok` in the "Enter npm package name" field
 5. Agree to the risks of using community nodes (if prompted)
 6. Click "Install"
 
-After installation, the node will be available in the "OpenRouter" category in the node palette.
+After installation, the node will be available in the "Grok" category in the node palette.
 
 ### Manual Installation (Advanced)
 
@@ -39,7 +39,7 @@ If you prefer manual installation or are using a custom n8n setup:
 2. Navigate to the `nodes` subdirectory
 3. Run the following command:
    ```
-   npm install n8n-nodes-openrouter
+   npm install n8n-nodes-grok
    ```
 4. Restart your n8n instance
 
@@ -64,8 +64,8 @@ If you encounter issues with the node not updating to new versions correctly or 
 
 ## Usage
 
-1. Add the OpenRouter node to your workflow
-2. Configure the OpenRouter API credentials (see Configuration section)
+1. Add the Grok node to your workflow
+2. Configure the Grok API credentials (see Configuration section)
 3. Select the desired operation (currently only 'Chat' is available)
 4. Choose an AI model from the dropdown list
 5. (Optional) Provide a system prompt to set the behavior of the AI
@@ -79,13 +79,13 @@ The model selector provides truncated descriptions of each available model along
 
 ## Configuration
 
-### OpenRouter API Credentials
+### Grok API Credentials
 
-To use this node, you need to set up OpenRouter API credentials:
+To use this node, you need to set up Grok API credentials:
 
-1. Sign up for an account at [OpenRouter](https://openrouter.ai/)
-2. Generate an API key in your OpenRouter dashboard
-3. In n8n, create a new credential of type 'OpenRouter API'
+1. Sign up for an account at [Grok](https://grok.ai/)
+2. Generate an API key in your Grok dashboard
+3. In n8n, create a new credential of type 'Grok API'
 4. Enter your API key
 
 ### Node Parameters
@@ -106,20 +106,20 @@ To use this node, you need to set up OpenRouter API credentials:
 ### Basic Chat Workflow
 
 1. Add a "Manual" trigger node
-2. Connect an OpenRouter node
-3. Configure the OpenRouter node:
+2. Connect an Grok node
+3. Configure the Grok node:
    - Operation: Chat
    - Model: Choose a model (e.g., "gpt-3.5-turbo")
    - Message: "Hello, can you explain what n8n is?"
 4. Execute the workflow
-5. The OpenRouter node will return the AI's response explaining n8n
+5. The Grok node will return the AI's response explaining n8n
 
 ### Dynamic System Prompt
 
 1. Start with a "Manual" trigger node
 2. Add a "Set" node to define a variable for the system prompt
-3. Connect an OpenRouter node
-4. Configure the OpenRouter node:
+3. Connect an Grok node
+4. Configure the Grok node:
    - Operation: Chat
    - Model: Choose a model
    - System Prompt: {{$node["Set"].json["systemPrompt"]}}
@@ -129,7 +129,7 @@ To use this node, you need to set up OpenRouter API credentials:
 
 ## Support
 
-If you encounter any issues or have questions about this node, please [open an issue](https://github.com/MatthewSabia1/n8n-nodes-openrouter/issues) on the GitHub repository.
+If you encounter any issues or have questions about this node, please [open an issue](https://github.com/jvkassi/n8n-nodes-grok/issues) on the GitHub repository.
 
 ## Contributing
 
@@ -148,8 +148,8 @@ This project is licensed under the [MIT License](LICENSE.md).
 ## About n8n
 n8n is a free and open [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation tool. It can be self-hosted, easily extended, and used to automate workflows across various services and applications. n8n enables you to connect anything to everything.
 
-## About OpenRouter
-OpenRouter is a platform that provides a unified API to access various AI models. It allows developers to integrate multiple AI services into their applications without managing separate API integrations for each model provider. OpenRouter supports a wide range of models from different providers, making it easier to experiment with and deploy various AI capabilities in your workflows.
+## About Grok
+Grok is a platform that provides a unified API to access various AI models. It allows developers to integrate multiple AI services into their applications without managing separate API integrations for each model provider. Grok supports a wide range of models from different providers, making it easier to experiment with and deploy various AI capabilities in your workflows.
 
 ## Changelog
 

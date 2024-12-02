@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.2.5] - 2023-10-10
 
 ### Added
-- Dropdown menu for model selection, displaying all available models from OpenRouter
+- Dropdown menu for model selection, displaying all available models from Grok
 - Settings to adjust model parameters:
   - Frequency penalty
   - Presence penalty
@@ -24,12 +24,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.2.0] - 2023-05-14
 
 ### Added
-- Support for streaming responses from the OpenRouter API
+- Support for streaming responses from the Grok API
 - Additional options for API requests:
   - Temperature
   - Max tokens
 - Improved error handling and input validation
-- Dropdown selector for OpenRouter models
+- Dropdown selector for Grok models
 
 ### Changed
 - Updated the node icon to use an SVG file
@@ -38,5 +38,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2023-05-01
 
 ### Added
-- Initial release of the OpenRouter node for n8n
-- Basic chat completion functionality using the OpenRouter API
+- Initial release of the Grok node for n8n
+- Basic chat completion functionality using the Grok API
